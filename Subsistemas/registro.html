@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -30,11 +50,45 @@
             </li>
             <li>Dirección</li>
             <li>Fecha de Nacimiento</li>
-            <li>Curp</li>
-            <li>Ine</li>
-            <li>Correo electrónico</li>
+            <li>CURP</li>
+            <li>INE</li>
+            <li>Correo Electrónico</li>
             <li>No. Teléfono</li>        
         </ul>
+
+        <h3>El Usuario  debe ser capaz de:</h3>
+
+        <div class="form-container">
+            <h2>Formulario de Pago</h2>
+            <form id="payment-form">
+                <h3>Información Personal</h3>
+                <label for="name">Nombre Completo:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="address">Dirección:</label>
+                <input type="text" id="address" name="address" required>
+    
+                <h3>Información de Pago</h3>
+                <label for="card-number">Número de Tarjeta:</label>
+                <input type="text" id="card-number" name="card-number" required>
+    
+                <label for="expiry-date">Fecha de Expiración:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+    
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+    
+                <button type="submit">Realizar Pago</button>
+            </form>
+        </div>
+    
+        <script>
+            document.getElementById('payment-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Pago realizado con éxito!');
+                // Aquí puedes agregar la lógica para procesar el pago
+            });
+        </script>
 
         <h1>Responsable del subsistema</h1>
         <ul>
