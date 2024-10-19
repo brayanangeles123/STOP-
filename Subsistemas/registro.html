@@ -58,37 +58,32 @@
 
         <h3>El Usuario  debe ser capaz de:</h3>
 
-        <div class="form-container">
-            <h2>Formulario de Pago</h2>
-            <form id="payment-form">
-                <h3>Información Personal</h3>
-                <label for="name">Nombre Completo:</label>
-                <input type="text" id="name" name="name" required>
-    
-                <label for="address">Dirección:</label>
-                <input type="text" id="address" name="address" required>
-    
-                <h3>Información de Pago</h3>
-                <label for="card-number">Número de Tarjeta:</label>
-                <input type="text" id="card-number" name="card-number" required>
-    
-                <label for="expiry-date">Fecha de Expiración:</label>
-                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
-    
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" required>
-    
-                <button type="submit">Realizar Pago</button>
+        <div class="section">
+            <h2> Agregar Método de Pago</h2>
+            <p>Para completar el registro, se requiere un pago. Por favor, proporciona los siguientes detalles de tu tarjeta de crédito o débito:</p>
+            <form action="/procesar-pago" method="POST">
+                <div>
+                    <label for="nombre-titular">Nombre del Titular:</label>
+                    <input type="text" id="nombre-titular" name="nombre-titular" required>
+                </div>
+                <div>
+                    <label for="numero-tarjeta">Número de Tarjeta:</label>
+                    <input type="text" id="numero-tarjeta" name="numero-tarjeta" required pattern="\d{16}" placeholder="1234 5678 9012 3456">
+                </div>
+                <div>
+                    <label for="fecha-expiracion">Fecha de Expiración:</label>
+                    <input type="month" id="fecha-expiracion" name="fecha-expiracion" required>
+                </div>
+                <div>
+                    <label for="codigo-seguridad">Código de Seguridad:</label>
+                    <input type="text" id="codigo-seguridad" name="codigo-seguridad" required pattern="\d{3}" placeholder="123">
+                </div>
+                <div>
+                    <button type="submit">Realizar Pago</button>
+                </div>
             </form>
+            <p>Asegúrate de que la información sea correcta para evitar problemas con el pago.</p>
         </div>
-    
-        <script>
-            document.getElementById('payment-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                alert('Pago realizado con éxito!');
-                // Aquí puedes agregar la lógica para procesar el pago
-            });
-        </script>
 
         <h1>Responsable del subsistema</h1>
         <ul>
