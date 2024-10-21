@@ -4,6 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        h1, h2, h3 {
+            color: #007BFF;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none; /* Eliminar viñetas */
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #dee2e6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007BFF;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <section>
@@ -23,40 +99,61 @@
       </ul>
  
       <h1>Funcionalidades de los Usuarios del subsistema</h1>
-      <h2>Funcionalidades del Usuario del Sistema de Registro</h2>
-      <li>Visualizar su lista de usuarios</li>
-      <p>La tabla Usuarios facilita la visualización de la lista completa de usuarios con los campos ID de usuario, Nombre completo, Correo electrónico, Teléfono y Fecha de registro. El usuario del sistema puede consultar fácilmente todos los registros y acceder a los detalles de cada uno.</p>
-      <li>Acceder a detalles específicos al seleccionar un usuario</li>
-      <p>Al seleccionar un usuario en particular, los detalles como Métodos de pago, Dirección de contacto y Datos personales se extraen de las tablas correspondientes. Esta estructura permite acceder a la información completa de cada usuario de manera eficiente.</p>
-      <li>Visualizar los datos del usuario</li>
-      <p>A través de la relación entre la tabla Usuarios y Métodos de Pago, el usuario del sistema puede consultar la información del usuario: Nombre, Dirección, Teléfono, así como los detalles del método de pago asociado.</p>
-      <li>Acceder a la información de pago</li>
-      <p>La tabla Métodos de Pago permite consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Usuarios, la información de pago de cada usuario está bien organizada y accesible.</p>
-      <li>Modificar los registros</li>
-      <p>Los cambios en los datos del usuario (e.g., actualización de información) pueden realizarse directamente modificando los campos correspondientes en la tabla Usuarios. Además, el sistema permite eliminar un registro si es necesario.</p>
-      <li>Imprimir una copia del registro</li>
-      <p>Al extraer los datos necesarios de las tablas Usuarios y Métodos de Pago, se puede generar un informe detallado del usuario para impresión. Esto es posible gracias a la clara organización de la base de datos que permite obtener toda la información relevante de un registro.</p>
-      <li>Ver su panel de estadísticas</li>
-      <p>Para las estadísticas de registro, se pueden realizar consultas a la tabla Usuarios agrupadas por fechas (Fecha de registro), lo que facilita la generación de gráficos de usuarios registrados por períodos (diarios, semanales, mensuales). Asimismo, las tendencias en métodos de pago se pueden generar a partir de la tabla Métodos de Pago.</p>
-      <li>Editar Métodos de Pago</li>
-      <p>La tabla Métodos de Pago permite visualizar, añadir, editar o eliminar métodos de pago. Esta tabla está diseñada para gestionar los métodos de manera independiente de los usuarios, asegurando que los cambios no afecten los registros históricos de las transacciones.</p>
+      <h3>Funcionalidades del Usuario del Sistema de Registro</h3>
+      
+      <ul>
+        <li>Visualizar su lista de usuarios</li>
+        <p>La tabla Usuarios facilita la visualización de la lista completa de usuarios con los campos ID de usuario, Nombre completo, Correo electrónico, Teléfono y Fecha de registro. El usuario del sistema puede consultar fácilmente todos los registros y acceder a los detalles de cada uno.</p>
+
+        <li>Acceder a detalles específicos al seleccionar un usuario</li>
+        <p>Al seleccionar un usuario en particular, los detalles como Métodos de pago, Dirección de contacto y Datos personales se extraen de las tablas correspondientes. Esta estructura permite acceder a la información completa de cada usuario de manera eficiente.</p>
+
+        <li>Visualizar los datos del usuario</li>
+        <p>A través de la relación entre la tabla Usuarios y Métodos de Pago, el usuario del sistema puede consultar la información del usuario: Nombre, Dirección, Teléfono, así como los detalles del método de pago asociado.</p>
+
+        <li>Acceder a la información de pago</li>
+        <p>La tabla Métodos de Pago permite consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Usuarios, la información de pago de cada usuario está bien organizada y accesible.</p>
+        
+        <li>Modificar los registros</li>
+        <p>Los cambios en los datos del usuario (e.g., actualización de información) pueden realizarse directamente modificando los campos correspondientes en la tabla Usuarios. Además, el sistema permite eliminar un registro si es necesario.</p>
+        
+        <li>Imprimir una copia del registro</li>
+        <p>Al extraer los datos necesarios de las tablas Usuarios y Métodos de Pago, se puede generar un informe detallado del usuario para impresión. Esto es posible gracias a la clara organización de la base de datos que permite obtener toda la información relevante de un registro.</p>
+        
+        <li>Ver su panel de estadísticas</li>
+        <p>Para las estadísticas de registro, se pueden realizar consultas a la tabla Usuarios agrupadas por fechas (Fecha de registro), lo que facilita la generación de gráficos de usuarios registrados por períodos (diarios, semanales, mensuales). Asimismo, las tendencias en métodos de pago se pueden generar a partir de la tabla Métodos de Pago.</p>
+        
+        <li>Editar Métodos de Pago</li>
+        <p>La tabla Métodos de Pago permite visualizar, añadir, editar o eliminar métodos de pago. Esta tabla está diseñada para gestionar los métodos de manera independiente de los usuarios, asegurando que los cambios no afecten los registros históricos de las transacciones.</p>
+    </ul>
+      
       <h1>Funcionalidades del Usuario del Sistema de Registro</h1>
+      
       <li>Visualizar la información disponible</li>
       <p>Los usuarios pueden ver los métodos de pago disponibles en el sistema. Se pueden implementar filtros (por tipo de método, estado, etc.) para facilitar la búsqueda.</p>
+      
       <li>Elaborar su propia configuración de pago</li>
       <p>El usuario puede personalizar su método de pago seleccionando opciones de la tabla Métodos de Pago y agregándolas a su perfil. Esto garantiza que cada configuración esté registrada adecuadamente.</p>
+      
       <li>Visualizar detalles de contacto</li>
       <p>Los detalles de contacto, como la dirección y teléfono, se almacenan en la tabla Usuarios. Esto permite que el usuario proporcione instrucciones específicas que podrán ser recuperadas para futuras transacciones.</p>
+      
       <li>Definir preferencias de pago</li>
       <p>Los campos en la tabla Métodos de Pago permiten al usuario seleccionar sus preferencias de pago, asegurando que la configuración se gestione de acuerdo con las elecciones del usuario.</p>
+      
       <li>Elegir Método de Pago</li>
       <p>Los usuarios pueden elegir entre tarjeta de crédito o tarjeta de débito como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado, garantizando su confidencialidad y estado.</p>
+      
       <h1>Separación de Responsabilidades por Tabla</h1>
+      
       <li>Usuarios</li>
       <p>Contiene información única de los usuarios, como nombre, dirección y teléfono. Esto asegura que los datos de los usuarios no se repitan y permite gestionar sus configuraciones de pago de manera eficiente.</p>
+      
       <li>Métodos de Pago</li>
       <p>Almacena la información relacionada con los métodos de pago seleccionados por los usuarios, incluyendo el tipo de tarjeta y su estado. Esta tabla gestiona de manera segura la información sensible y asegura que cualquier modificación en los métodos de pago no afecte la tabla de usuarios.</p>
+      
       <h1>Código SQL para construir las tablas con las llaves foraneas y su función</h1>
+      
       <pre>
         -- Crear tabla Clientes
         CREATE TABLE Usuarios (
@@ -85,6 +182,7 @@
     </pre>
 
     <h1>Registros en las Tablas de la Base de Datos</h1>
+    
     <pre>
         -- -- Inserta Tabla de usuarios
         INSERT INTO Usuarios (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
