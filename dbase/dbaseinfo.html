@@ -12,7 +12,16 @@
 
       <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
       <p>La arquitectura de la base de datos del Subsistema de Registro ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación se realicen de forma rápida y eficiente.</p>
+
+      <li>Organización y Claridad de los Datos (1NF, 2NF, 3NF)</li>
+      <p>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Usuarios, los datos de cada usuario (nombre, correo electrónico, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</p>
+      <p>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Métodos de Pago, los detalles del método de pago y el estado del pago dependen del identificador único del usuario (UsuarioID).</p>
+      <p>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del usuario y del método de pago están separados, lo que evita duplicación y mantiene la consistencia. Un método de pago está relacionado con un usuario a través de una clave foránea (UsuarioID).</p>
       
+      <h1>Funcionalidades de los Usuarios del subsistema</h1>
+      <h2>Funcionalidades del Usuario del Sistema de Registro</h2>
+      <li>Visualizar su lista de usuarios</li>
+
 </body>
    
 </html>
