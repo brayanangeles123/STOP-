@@ -77,25 +77,25 @@
 </head>
 <body>
     <section>
-        <a href="./../Subsistemas/registro.html">Registro</a>
-      </section>
+        <a href="./../Subsistemas/registro.html" class="button">Registro</a>
+    </section>
 
-      <img src="./../imagenes/imagen1.jpg" alt="Diagrama de Registros">
+    <img src="./../imagenes/imagen1.jpg" alt="Diagrama de Registros">
 
-      <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
-      <p>La arquitectura de la base de datos del Subsistema de Registro ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación se realicen de forma rápida y eficiente.</p>
+    <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
+    <p>La arquitectura de la base de datos del Subsistema de Registro ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación se realicen de forma rápida y eficiente.</p>
 
-      <ul>
+    <ul>
         <li>Organización y Claridad de los Datos (1NF, 2NF, 3NF)</li>
         <p>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Usuarios, los datos de cada usuario (nombre, correo electrónico, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</p>
         <p>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Métodos de Pago, los detalles del método de pago y el estado del pago dependen del identificador único del usuario (UsuarioID).</p>
         <p>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del usuario y del método de pago están separados, lo que evita duplicación y mantiene la consistencia. Un método de pago está relacionado con un usuario a través de una clave foránea (UsuarioID).</p>
-      </ul>
- 
-      <h1>Funcionalidades de los Usuarios del subsistema</h1>
-      <h3>Funcionalidades del Usuario del Sistema de Registro</h3>
-      
-      <ul>
+    </ul>
+
+    <h1>Funcionalidades de los Usuarios del subsistema</h1>
+    <h3>Funcionalidades del Usuario del Sistema de Registro</h3>
+    
+    <ul>
         <li>Visualizar su lista de usuarios</li>
         <p>La tabla Usuarios facilita la visualización de la lista completa de usuarios con los campos ID de usuario, Nombre completo, Correo electrónico, Teléfono y Fecha de registro. El usuario del sistema puede consultar fácilmente todos los registros y acceder a los detalles de cada uno.</p>
 
@@ -120,35 +120,18 @@
         <li>Editar Métodos de Pago</li>
         <p>La tabla Métodos de Pago permite visualizar, añadir, editar o eliminar métodos de pago. Esta tabla está diseñada para gestionar los métodos de manera independiente de los usuarios, asegurando que los cambios no afecten los registros históricos de las transacciones.</p>
     </ul>
-      
-      <h1>Funcionalidades del Usuario del Sistema de Registro</h1>
-      
-      <li>Visualizar la información disponible</li>
-      <p>Los usuarios pueden ver los métodos de pago disponibles en el sistema. Se pueden implementar filtros (por tipo de método, estado, etc.) para facilitar la búsqueda.</p>
-      
-      <li>Elaborar su propia configuración de pago</li>
-      <p>El usuario puede personalizar su método de pago seleccionando opciones de la tabla Métodos de Pago y agregándolas a su perfil. Esto garantiza que cada configuración esté registrada adecuadamente.</p>
-      
-      <li>Visualizar detalles de contacto</li>
-      <p>Los detalles de contacto, como la dirección y teléfono, se almacenan en la tabla Usuarios. Esto permite que el usuario proporcione instrucciones específicas que podrán ser recuperadas para futuras transacciones.</p>
-      
-      <li>Definir preferencias de pago</li>
-      <p>Los campos en la tabla Métodos de Pago permiten al usuario seleccionar sus preferencias de pago, asegurando que la configuración se gestione de acuerdo con las elecciones del usuario.</p>
-      
-      <li>Elegir Método de Pago</li>
-      <p>Los usuarios pueden elegir entre tarjeta de crédito o tarjeta de débito como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado, garantizando su confidencialidad y estado.</p>
-      
-      <h1>Separación de Responsabilidades por Tabla</h1>
-      
-      <li>Usuarios</li>
-      <p>Contiene información única de los usuarios, como nombre, dirección y teléfono. Esto asegura que los datos de los usuarios no se repitan y permite gestionar sus configuraciones de pago de manera eficiente.</p>
-      
-      <li>Métodos de Pago</li>
-      <p>Almacena la información relacionada con los métodos de pago seleccionados por los usuarios, incluyendo el tipo de tarjeta y su estado. Esta tabla gestiona de manera segura la información sensible y asegura que cualquier modificación en los métodos de pago no afecte la tabla de usuarios.</p>
-      
-      <h1>Código SQL para construir las tablas con las llaves foraneas y su función</h1>
-      
-      <pre>
+    
+    <h1>Separación de Responsabilidades por Tabla</h1>
+    
+    <li>Usuarios</li>
+    <p>Contiene información única de los usuarios, como nombre, dirección y teléfono. Esto asegura que los datos de los usuarios no se repitan y permite gestionar sus configuraciones de pago de manera eficiente.</p>
+    
+    <li>Métodos de Pago</li>
+    <p>Almacena la información relacionada con los métodos de pago seleccionados por los usuarios, incluyendo el tipo de tarjeta y su estado. Esta tabla gestiona de manera segura la información sensible y asegura que cualquier modificación en los métodos de pago no afecte la tabla de usuarios.</p>
+    
+    <h1>Código SQL para construir las tablas con las llaves foráneas y su función</h1>
+    
+    <pre>
         -- Crear tabla Clientes
         CREATE TABLE Usuarios (
             Id INT PRIMARY KEY IDENTITY,
@@ -178,7 +161,7 @@
     <h1>Registros en las Tablas de la Base de Datos</h1>
     
     <pre>
-        -- -- Inserta Tabla de usuarios
+        -- Inserta Tabla de usuarios
         INSERT INTO Usuarios (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
         VALUES
         ('Juan', 'Pérez', 'García', 'Calle Falsa 123', '1990-01-01', 'CURP123456', 'INE123456', 'juan@example.com', '5551234567', 'hashed_password1'),
@@ -186,7 +169,6 @@
         ('Isa', 'olguin', 'zenil', 'Calle reforma1', '2004-02-17', 'CURP456', 'INE56', 'isa@example.com', '5551234567', 'isa123'),
         ('kari', 'Cruz', 'Cruz', 'Calle reforma2', '2004-03-01', 'CURP123', 'INE12', 'kari@example.com', '5551234567', 'kari123'),
         ('Dayan', 'Euroza', 'Mera', 'Calle reforma3', '2004-06-12', 'CURP789', 'INE34', 'dayan@example.com', '5551234567', 'dayan123');
-
 
         -- Inserta un método de pago para el usuario recién creado
         INSERT INTO MetodosPago (UsuarioId, NombreTitular, NumeroTarjeta, FechaExpiracion, CVV)
@@ -197,8 +179,6 @@
         (1, 'kari Cruz', '1234567812345678', '10/26', '789'),
         (1, 'Dayan Euroza', '1234567812345678', '12/25', '123');
     </pre>
-
-
 </body>
-   
 </html>
+
