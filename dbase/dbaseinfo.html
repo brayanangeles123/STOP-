@@ -141,83 +141,82 @@
         
         <h1>Código SQL para construir las tablas con las llaves foráneas y su función</h1>
         
-        <pre>
--- Crear tabla Usuarios
-CREATE TABLE Usuarios (
-Id_Usuario INT PRIMARY KEY IDENTITY,
-Nombre VARCHAR(50),
-SegundoNombre VARCHAR(50) NULL, -- Campo añadido como Nulo
-ApellidoPaterno VARCHAR(50),
-ApellidoMaterno VARCHAR(50),
-Direccion VARCHAR(255),
-FechaNacimiento DATE,
-CURP VARCHAR(18),
-INE VARCHAR(20),
-CorreoElectronico VARCHAR(100) UNIQUE,
-Telefono VARCHAR(15),
-Contrasena VARCHAR(255) -- Asegúrate de encriptar esta información
-);
+    <pre>
+        -- Crear tabla Usuarios
+        CREATE TABLE Usuarios (
+        Id_Usuario INT PRIMARY KEY IDENTITY,
+        Nombre VARCHAR(50),
+        SegundoNombre VARCHAR(50) NULL, -- Campo añadido como Nulo
+        ApellidoPaterno VARCHAR(50),
+        ApellidoMaterno VARCHAR(50),
+        Direccion VARCHAR(255),
+        FechaNacimiento DATE,
+        CURP VARCHAR(18),
+        INE VARCHAR(20),
+        CorreoElectronico VARCHAR(100) UNIQUE,
+        Telefono VARCHAR(15),
+        Contrasena VARCHAR(255) -- Asegúrate de encriptar esta información
+        );
 
--- Crear tabla MetodosPago
-CREATE TABLE MetodosPago (
-Id INT PRIMARY KEY IDENTITY,
-UsuarioId INT,
-Tipo VARCHAR(20),
-NombreTitular VARCHAR(100),
-NumeroTarjeta VARCHAR(16), -- Considera encriptar este dato
-FechaExpiracion VARCHAR(5), -- MM/AA
-CVV VARCHAR(4), -- Considera no almacenar este dato
-CONSTRAINT FK_UsuarioMetodo FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
-);
+        -- Crear tabla MetodosPago
+        CREATE TABLE MetodosPago (
+        Id INT PRIMARY KEY IDENTITY,
+        UsuarioId INT,
+        Tipo VARCHAR(20),
+        NombreTitular VARCHAR(100),
+        NumeroTarjeta VARCHAR(16), -- Considera encriptar este dato
+        FechaExpiracion VARCHAR(5), -- MM/AA
+        CVV VARCHAR(4), -- Considera no almacenar este dato
+        CONSTRAINT FK_UsuarioMetodo FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
+        );
 
--- Crear tabla Tramites
-CREATE TABLE Tramites (
-Id_Tramite INT PRIMARY KEY IDENTITY,
-UsuarioId INT, -- Clave foránea que relaciona al usuario que solicitó el trámite
-Descripcion VARCHAR(255),
-Precio DECIMAL(10, 2),
-CONSTRAINT FK_UsuarioTramite FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
-);
+        -- Crear tabla Tramites
+        CREATE TABLE Tramites (
+        Id_Tramite INT PRIMARY KEY IDENTITY,
+        UsuarioId INT, -- Clave foránea que relaciona al usuario que solicitó el trámite
+        Descripcion VARCHAR(255),
+        Precio DECIMAL(10, 2),
+        CONSTRAINT FK_UsuarioTramite FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
+        );
 
--- Crear tabla Transacciones
-CREATE TABLE Transacciones (
-Id INT PRIMARY KEY IDENTITY,
-UsuarioId INT,
-Id_Tramite INT, -- Clave foránea que relaciona al trámite
-Metodo VARCHAR(255), -- Método de pago o trámite
-Descripcion VARCHAR(255), -- Descripción de la transacción
-Fecha DATETIME, -- Fecha de la transacción
-Monto DECIMAL(10, 2),
-Estado VARCHAR(20),
-CONSTRAINT FK_UsuarioTransaccion FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario),
-CONSTRAINT FK_TramiteTransaccion FOREIGN KEY (Id_Tramite) REFERENCES Tramites(Id_Tramite)
-);
+        -- Crear tabla Transacciones
+        CREATE TABLE Transacciones (
+        Id INT PRIMARY KEY IDENTITY,
+        UsuarioId INT,
+        Id_Tramite INT, -- Clave foránea que relaciona al trámite
+        Metodo VARCHAR(255), -- Método de pago o trámite
+        Descripcion VARCHAR(255), -- Descripción de la transacción
+        Fecha DATETIME, -- Fecha de la transacción
+        Monto DECIMAL(10, 2),
+        Estado VARCHAR(20),
+        CONSTRAINT FK_UsuarioTransaccion FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario),
+        CONSTRAINT FK_TramiteTransaccion FOREIGN KEY (Id_Tramite) REFERENCES Tramites(Id_Tramite)
+        );
+    </pre>
 
-</pre>
-
-<h1>Registros en las Tablas de la Base de Datos</h1>
+    <h1>Registros en las Tablas de la Base de Datos</h1>
         
-<pre>
--- Insertar datos en la tabla Usuarios
-INSERT INTO Usuarios (Nombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
-VALUES 
-('Juan', 'Carlos', 'Pérez', 'García', 'Calle Falsa 123', '1990-05-15', 'PEGA900515HDFXYZ01', 'INE123456789', 'juan.perez@example.com', '5551234567', 'hashed_password_1'),
-('Ana', 'Luisa', 'López', 'Martínez', 'Calle Verdadera 456', '1985-08-22', 'LOMA850822MDFXYZ02', 'INE987654321', 'ana.lopez@example.com', '5557654321', 'hashed_password_2'),
-('Brayan', NULL, 'Angeles', 'Dorantes', 'Calle Morelos 14', '2004-07-14', 'PEGA900515HDFXYZ01', 'INE123456789', 'brayan@gmail.com', '7731377815', 'brayan123'),
-('Maria', 'Isabel', 'Olguin', 'Zenil', 'Calle S/N', '2004-02-17', 'LOMA850822MDFXYZ02', 'INE987654321', 'isabelolguin@gmail.com', '5557654321', 'isa123'),
-('Karina', 'Gabriela', 'Cruz', 'Cruz', 'Calle Falsa 12', '2004-03-01', 'PEGA900515HDFXYZ01', 'INE123456789', 'KariCruz@gmail.com', '5551234567', 'kari123'),
-('Angel', 'Dayan', 'Euroza', 'Mera', 'Calle Venustiano Carranza', '2004-06-22', 'PEGA900515HDFXYZ01', 'INE123456789', 'angeleuroza@gmail.com', '5551234567', 'angel123');
+    <pre>
+        -- Insertar datos en la tabla Usuarios
+        INSERT INTO Usuarios (Nombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
+        VALUES 
+        ('Juan', 'Carlos', 'Pérez', 'García', 'Calle Falsa 123', '1990-05-15', 'PEGA900515HDFXYZ01', 'INE123456789', 'juan.perez@example.com', '5551234567', 'hashed_password_1'),
+        ('Ana', 'Luisa', 'López', 'Martínez', 'Calle Verdadera 456', '1985-08-22', 'LOMA850822MDFXYZ02', 'INE987654321', 'ana.lopez@example.com', '5557654321', 'hashed_password_2'),
+        ('Brayan', NULL, 'Angeles', 'Dorantes', 'Calle Morelos 14', '2004-07-14', 'PEGA900515HDFXYZ01', 'INE123456789', 'brayan@gmail.com', '7731377815', 'brayan123'),
+        ('Maria', 'Isabel', 'Olguin', 'Zenil', 'Calle S/N', '2004-02-17', 'LOMA850822MDFXYZ02', 'INE987654321', 'isabelolguin@gmail.com', '5557654321', 'isa123'),
+        ('Karina', 'Gabriela', 'Cruz', 'Cruz', 'Calle Falsa 12', '2004-03-01', 'PEGA900515HDFXYZ01', 'INE123456789', 'KariCruz@gmail.com', '5551234567', 'kari123'),
+        ('Angel', 'Dayan', 'Euroza', 'Mera', 'Calle Venustiano Carranza', '2004-06-22', 'PEGA900515HDFXYZ01', 'INE123456789', 'angeleuroza@gmail.com', '5551234567', 'angel123');
 
 
--- Insertar datos en la tabla Tramites
-INSERT INTO Tramites (Descripcion, Precio)
-VALUES 
-('Registro de nacimiento', 500.00),
-('Solicitud de pasaporte', 1200.00),
-('Cambio de dirección', 300.00),
-('Servicio de agua', 120.00),
-('Predial', 800.00),
-('Matrimonio', 1000.00);
+        -- Insertar datos en la tabla Tramites
+        INSERT INTO Tramites (Descripcion, Precio)
+        VALUES 
+        ('Registro de nacimiento', 500.00),
+        ('Solicitud de pasaporte', 1200.00),
+        ('Cambio de dirección', 300.00),
+        ('Servicio de agua', 120.00),
+        ('Predial', 800.00),
+        ('Matrimonio', 1000.00);
 
 
         -- Insertar datos en la tabla MetodosPago
@@ -231,16 +230,16 @@ VALUES
         (6, 'Transferencia', 'Dayan Euroza', '6452324214751653' , '01/26', '456');
 
 
--- Insertar datos en la tabla Transacciones
-INSERT INTO Transacciones (UsuarioId, Id_Tramite, Metodo, Descripcion, Fecha, Monto, Estado)
-VALUES 
-(1, 1, 'Tarjeta de Crédito', 'Compra de libros', '2024-10-21T14:30:00', 150.00, 'Completo'),
-(1, 2, 'Tarjeta de Crédito', 'Pago de suscripción', '2024-10-22T10:15:00', 50.00, 'Pendiente'),
-(2, 3, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
-(3, 4, 'Tarjeta de Debito', 'Pago de suscripciòn', '2024-10-21T09:00:00', 200.00, 'Pendiente'),
-(4, 5, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
-(5, 6, 'Tarjeta de Debito', 'Pago de video juego', '2024-10-21T09:00:00', 200.00, 'Completo');
-</pre>
+        -- Insertar datos en la tabla Transacciones
+        INSERT INTO Transacciones (UsuarioId, Id_Tramite, Metodo, Descripcion, Fecha, Monto, Estado)
+        VALUES 
+        (1, 1, 'Tarjeta de Crédito', 'Compra de libros', '2024-10-21T14:30:00', 150.00, 'Completo'),
+        (1, 2, 'Tarjeta de Crédito', 'Pago de suscripción', '2024-10-22T10:15:00', 50.00, 'Pendiente'),
+        (2, 3, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
+        (3, 4, 'Tarjeta de Debito', 'Pago de suscripciòn', '2024-10-21T09:00:00', 200.00, 'Pendiente'),
+        (4, 5, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
+        (5, 6, 'Tarjeta de Debito', 'Pago de video juego', '2024-10-21T09:00:00', 200.00, 'Completo');
+    </pre>
     </div>
 </body>
 </html>
