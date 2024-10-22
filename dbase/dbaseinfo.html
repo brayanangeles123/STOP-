@@ -84,42 +84,42 @@
             <a href="./../Subsistemas/registro.html" class="button">Registro</a>
         </section>
 
-        <img src="./../imagenes/imagen1.jpg" alt="Diagrama de Registros">
+        <img src="./../imagenes/imagen2.jpg.jpg" alt="Diagrama de Registros">
 
         <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
         <p>La arquitectura de la base de datos del Subsistema de Registro ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación se realicen de forma rápida y eficiente.</p>
 
         <ul>
             <li>Organización y Claridad de los Datos (1NF, 2NF, 3NF)</li>
-            <p>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Usuarios, los datos de cada usuario (nombre, correo electrónico, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</p>
-            <p>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Métodos de Pago, los detalles del método de pago y el estado del pago dependen del identificador único del usuario (UsuarioID).</p>
-            <p>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del usuario y del método de pago están separados, lo que evita duplicación y mantiene la consistencia. Un método de pago está relacionado con un usuario a través de una clave foránea (UsuarioID).</p>
+            <p>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Usuarios, los datos de cada usuario (nombre, correo electrónico, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor. Esto asegura que no hay listas ni conjuntos dentro de los campos, manteniendo la integridad de los datos.</p>
+            <p>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla MetodosPago, todos los detalles del método de pago, como el tipo, el nombre del titular y el número de tarjeta, dependen del identificador único del método de pago (Id). Esto evita dependencias parciales y asegura que cada campo contribuya directamente a describir el registro.</p>
+            <p>3NF (Tercera Forma Normal):No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, en la tabla Transacciones, todos los atributos dependen directamente de la clave primaria (Id), y no hay atributos no clave que dependen de otros atributos no clave. Además, los datos del usuario y del método de pago están separados, lo que evita duplicación y mantiene la consistencia, asegurando que un método de pago esté relacionado con un usuario a través de la clave foránea (UsuarioId).</p>
         </ul>
 
         <h1>Funcionalidades de los Usuarios del subsistema</h1>
         <h3>Funcionalidades del Usuario del Sistema de Registro</h3>
         
         <ul>
-            <li>Visualizar su lista de usuarios</li>
-            <p>La tabla Usuarios facilita la visualización de la lista completa de usuarios con los campos ID de usuario, Nombre completo, Correo electrónico, Teléfono y Fecha de registro. El usuario del sistema puede consultar fácilmente todos los registros y acceder a los detalles de cada uno.</p>
+            <li>Visualizar su lista de trámites</li>
+            <p>La tabla Tramites facilita la visualización de la lista completa de trámites con los campos ID de trámite, Descripción, Precio y Estado. El usuario del sistema puede consultar fácilmente todos los registros y acceder a los detalles de cada trámite.</p>
 
-            <li>Acceder a detalles específicos al seleccionar un usuario</li>
-            <p>Al seleccionar un usuario en particular, los detalles como Métodos de pago, Dirección de contacto y Datos personales se extraen de las tablas correspondientes. Esta estructura permite acceder a la información completa de cada usuario de manera eficiente.</p>
+            <li>Acceder a detalles específicos al seleccionar un trámite</li>
+            <p>Al seleccionar un trámite en particular, los detalles como Usuario asociado, Fecha de solicitud y Precio se extraen de las tablas correspondientes. Esta estructura permite acceder a la información completa de cada trámite de manera eficiente.</p>
 
             <li>Visualizar los datos del usuario</li>
-            <p>A través de la relación entre la tabla Usuarios y Métodos de Pago, el usuario del sistema puede consultar la información del usuario: Nombre, Dirección, Teléfono, así como los detalles del método de pago asociado.</p>
+            <p>A través de la relación entre la tabla Usuarios y Tramites, el usuario del sistema puede consultar la información del usuario: Nombre, Apellido, Correo electrónico, así como los detalles del trámite asociado.</p>
 
-            <li>Acceder a la información de pago</li>
-            <p>La tabla Métodos de Pago permite consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Usuarios, la información de pago de cada usuario está bien organizada y accesible.</p>
+            <li>Acceder a la información de métodos de pago</li>
+            <p>La tabla Métodos de Pago permite consultar el método de pago utilizado para cada trámite, incluyendo detalles como el tipo de pago y el estado (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Usuarios, la información de pago de cada usuario está bien organizada y accesible.</p>
             
-            <li>Modificar los registros</li>
-            <p>Los cambios en los datos del usuario (e.g., actualización de información) pueden realizarse directamente modificando los campos correspondientes en la tabla Usuarios. Además, el sistema permite eliminar un registro si es necesario.</p>
+            <li>Modificar los registros de trámites</li>
+            <p>Los cambios en los datos de los trámites (e.g., actualización de información) pueden realizarse directamente modificando los campos correspondientes en la tabla Tramites. Además, el sistema permite eliminar un registro si es necesario.</p>
             
-            <li>Imprimir una copia del registro</li>
-            <p>Al extraer los datos necesarios de las tablas Usuarios y Métodos de Pago, se puede generar un informe detallado del usuario para impresión. Esto es posible gracias a la clara organización de la base de datos que permite obtener toda la información relevante de un registro.</p>
+            <li>Imprimir una copia del registro de trámite</li>
+            <p>Al extraer los datos necesarios de las tablas Tramites y Usuarios, se puede generar un informe detallado del trámite para impresión. Esto es posible gracias a la clara organización de la base de datos que permite obtener toda la información relevante de un registro.</p>
             
-            <li>Ver su panel de estadísticas</li>
-            <p>Para las estadísticas de registro, se pueden realizar consultas a la tabla Usuarios agrupadas por fechas (Fecha de registro), lo que facilita la generación de gráficos de usuarios registrados por períodos (diarios, semanales, mensuales). Asimismo, las tendencias en métodos de pago se pueden generar a partir de la tabla Métodos de Pago.</p>
+            <li>Ver su historial de transacciones</li>
+            <p>Para las transacciones, se pueden realizar consultas a la tabla Transacciones que muestren todas las transacciones realizadas por el usuario, facilitando el seguimiento de los pagos realizados y su estado.</p>
             
             <li>Editar Métodos de Pago</li>
             <p>La tabla Métodos de Pago permite visualizar, añadir, editar o eliminar métodos de pago. Esta tabla está diseñada para gestionar los métodos de manera independiente de los usuarios, asegurando que los cambios no afecten los registros históricos de las transacciones.</p>
@@ -128,64 +128,119 @@
         <h1>Separación de Responsabilidades por Tabla</h1>
         
         <li>Usuarios</li>
-        <p>Contiene información única de los usuarios, como nombre, dirección y teléfono. Esto asegura que los datos de los usuarios no se repitan y permite gestionar sus configuraciones de pago de manera eficiente.</p>
+        <p>Se encarga de almacenar y gestionar la información personal de los usuarios del sistema. Sus responsabilidades incluyen el registro de nuevos usuarios, la autenticación de credenciales, la gestión de perfiles y la actualización de datos personales. Esta tabla es fundamental para garantizar que cada usuario tenga un identificador único y una estructura organizada para su información.</p>
         
         <li>Métodos de Pago</li>
-        <p>Almacena la información relacionada con los métodos de pago seleccionados por los usuarios, incluyendo el tipo de tarjeta y su estado. Esta tabla gestiona de manera segura la información sensible y asegura que cualquier modificación en los métodos de pago no afecte la tabla de usuarios.</p>
+        <p>Es responsable de gestionar la información relacionada con los métodos de pago utilizados por los usuarios. Esto incluye almacenar detalles como el tipo de pago, el nombre del titular, el número de tarjeta y la fecha de expiración. La separación de esta tabla permite que la información de pago sea administrada de manera independiente, asegurando que los cambios en los métodos de pago no afecten a los registros de usuarios o trámites.</p>
+
+        <li>Trámites</li>
+        <p>Tiene la responsabilidad de registrar y gestionar los diferentes trámites solicitados por los usuarios. Incluye información sobre la descripción del trámite, el usuario que lo solicitó y el precio asociado. Esta separación permite que los trámites se manejen de manera eficiente, facilitando la consulta y el seguimiento del estado de cada trámite.</p>
+
+        <li>Transacciones</li>
+        <p>Se encarga de registrar todas las transacciones realizadas por los usuarios, incluyendo detalles como el monto, la fecha, el método de pago utilizado y el estado de la transacción. Al mantener esta información en una tabla separada, se asegura que el historial de transacciones sea accesible y fácil de consultar, sin interferir con los datos de usuarios o trámites.</p>
         
         <h1>Código SQL para construir las tablas con las llaves foráneas y su función</h1>
         
         <pre>
-            -- Crear tabla Clientes
-            CREATE TABLE Usuarios (
-                Id INT PRIMARY KEY IDENTITY,
-                Nombre VARCHAR(50),
-                ApellidoPaterno VARCHAR(50),
-                ApellidoMaterno VARCHAR(50),
-                Direccion VARCHAR(255),
-                FechaNacimiento DATE,
-                CURP VARCHAR(18),
-                INE VARCHAR(20),
-                CorreoElectronico VARCHAR(100) UNIQUE,
-                Telefono VARCHAR(15),
-                Contrasena VARCHAR(255) -- Asegúrate de encriptar esta información
-            );
-            
-            CREATE TABLE MetodosPago (
-                Id INT PRIMARY KEY IDENTITY,
-                UsuarioId INT,
-                NombreTitular VARCHAR(100),
-                NumeroTarjeta VARCHAR(16), -- Considera encriptar este dato
-                FechaExpiracion VARCHAR(5), -- MM/AA
-                CVV VARCHAR(4), -- Considera no almacenar este dato
-                CONSTRAINT FK_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id)
-            );
-        </pre>
+-- Crear tabla Usuarios
+CREATE TABLE Usuarios (
+Id_Usuario INT PRIMARY KEY IDENTITY,
+Nombre VARCHAR(50),
+SegundoNombre VARCHAR(50) NULL, -- Campo añadido como Nulo
+ApellidoPaterno VARCHAR(50),
+ApellidoMaterno VARCHAR(50),
+Direccion VARCHAR(255),
+FechaNacimiento DATE,
+CURP VARCHAR(18),
+INE VARCHAR(20),
+CorreoElectronico VARCHAR(100) UNIQUE,
+Telefono VARCHAR(15),
+Contrasena VARCHAR(255) -- Asegúrate de encriptar esta información
+);
 
-        <h1>Registros en las Tablas de la Base de Datos</h1>
+-- Crear tabla MetodosPago
+CREATE TABLE MetodosPago (
+Id INT PRIMARY KEY IDENTITY,
+UsuarioId INT,
+Tipo VARCHAR(20),
+NombreTitular VARCHAR(100),
+NumeroTarjeta VARCHAR(16), -- Considera encriptar este dato
+FechaExpiracion VARCHAR(5), -- MM/AA
+CVV VARCHAR(4), -- Considera no almacenar este dato
+CONSTRAINT FK_UsuarioMetodo FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
+);
+
+-- Crear tabla Tramites
+CREATE TABLE Tramites (
+Id_Tramite INT PRIMARY KEY IDENTITY,
+UsuarioId INT, -- Clave foránea que relaciona al usuario que solicitó el trámite
+Descripcion VARCHAR(255),
+Precio DECIMAL(10, 2),
+CONSTRAINT FK_UsuarioTramite FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario)
+);
+
+-- Crear tabla Transacciones
+CREATE TABLE Transacciones (
+Id INT PRIMARY KEY IDENTITY,
+UsuarioId INT,
+Id_Tramite INT, -- Clave foránea que relaciona al trámite
+Metodo VARCHAR(255), -- Método de pago o trámite
+Descripcion VARCHAR(255), -- Descripción de la transacción
+Fecha DATETIME, -- Fecha de la transacción
+Monto DECIMAL(10, 2),
+Estado VARCHAR(20),
+CONSTRAINT FK_UsuarioTransaccion FOREIGN KEY (UsuarioId) REFERENCES Usuarios(Id_Usuario),
+CONSTRAINT FK_TramiteTransaccion FOREIGN KEY (Id_Tramite) REFERENCES Tramites(Id_Tramite)
+);
+
+</pre>
+
+<h1>Registros en las Tablas de la Base de Datos</h1>
         
-        <pre>
-            -- Inserta Tabla de usuarios
-            INSERT INTO Usuarios (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
-            VALUES
-            ('Juan', 'Pérez', 'García', 'Calle Falsa 123', '1990-01-01', 'CURP123456', 'INE123456', 'juan@example.com', '5551234567', 'hashed_password1'),
-            ('Brayan', 'Angeles', 'Dorantes', 'Morelos # 14', '2004-07-14', 'AEDB040714HHGNRRA2', 'INE123456', 'angelesdorantes55@gmail.com', '7731377815', 'brayan12345'),
-            ('Isa', 'olguin', 'zenil', 'Calle reforma1', '2004-02-17', 'CURP456', 'INE56', 'isa@example.com', '5551234567', 'isa123'),
-            ('kari', 'Cruz', 'Cruz', 'Calle reforma2', '2004-03-01', 'CURP123', 'INE12', 'kari@example.com', '5551234567', 'kari123'),
-            ('Dayan', 'Euroza', 'Mera', 'Calle reforma3', '2004-06-12', 'CURP789', 'INE34', 'dayan@example.com', '5551234567', 'dayan123');
+<pre>
+-- Insertar datos en la tabla Usuarios
+INSERT INTO Usuarios (Nombre, SegundoNombre, ApellidoPaterno, ApellidoMaterno, Direccion, FechaNacimiento, CURP, INE, CorreoElectronico, Telefono, Contrasena)
+VALUES 
+('Juan', 'Carlos', 'Pérez', 'García', 'Calle Falsa 123', '1990-05-15', 'PEGA900515HDFXYZ01', 'INE123456789', 'juan.perez@example.com', '5551234567', 'hashed_password_1'),
+('Ana', 'Luisa', 'López', 'Martínez', 'Calle Verdadera 456', '1985-08-22', 'LOMA850822MDFXYZ02', 'INE987654321', 'ana.lopez@example.com', '5557654321', 'hashed_password_2'),
+('Brayan', NULL, 'Angeles', 'Dorantes', 'Calle Morelos 14', '2004-07-14', 'PEGA900515HDFXYZ01', 'INE123456789', 'brayan@gmail.com', '7731377815', 'brayan123'),
+('Maria', 'Isabel', 'Olguin', 'Zenil', 'Calle S/N', '2004-02-17', 'LOMA850822MDFXYZ02', 'INE987654321', 'isabelolguin@gmail.com', '5557654321', 'isa123'),
+('Karina', 'Gabriela', 'Cruz', 'Cruz', 'Calle Falsa 12', '2004-03-01', 'PEGA900515HDFXYZ01', 'INE123456789', 'KariCruz@gmail.com', '5551234567', 'kari123'),
+('Angel', 'Dayan', 'Euroza', 'Mera', 'Calle Venustiano Carranza', '2004-06-22', 'PEGA900515HDFXYZ01', 'INE123456789', 'angeleuroza@gmail.com', '5551234567', 'angel123');
 
-            -- Inserta un método de pago para el usuario recién creado
-            INSERT INTO MetodosPago (UsuarioId, NombreTitular, NumeroTarjeta, FechaExpiracion, CVV)
-            VALUES 
-            (1, 'Juan Pérez', '1234567812345678', '12/25', '123'), -- Asegúrate de usar el Id correcto
-            (1, 'Brayan Angeles', '1234567812345678', '01/26', '999'),
-            (1, 'Isa olguin', '1234567812345678', '17/20', '456'),
-            (1, 'kari Cruz', '1234567812345678', '10/26', '789'),
-            (1, 'Dayan Euroza', '1234567812345678', '12/25', '123');
-        </pre>
+
+-- Insertar datos en la tabla Tramites
+INSERT INTO Tramites (Descripcion, Precio)
+VALUES 
+('Registro de nacimiento', 500.00),
+('Solicitud de pasaporte', 1200.00),
+('Cambio de dirección', 300.00),
+('Servicio de agua', 120.00),
+('Predial', 800.00),
+('Matrimonio', 1000.00);
+
+
+        -- Insertar datos en la tabla MetodosPago
+        INSERT INTO MetodosPago (UsuarioId, Tipo, NombreTitular, NumeroTarjeta, FechaExpiracion, CVV)
+        VALUES 
+        (1, 'Tarjeta de Crédito', 'Juan Pérez', '1234567812345678', '12/25', '123'),
+        (2, 'Transferencia', 'Ana López', NULL, NULL, NULL),
+        (3, 'Tarjeta de Debito', 'Brayan Angeles', '4152314112701563', '01/26', '456'),
+        (4, 'Transferencia', 'Isa Olguin', '4263435324862653' , '22/26', '456'),
+        (5, 'Transferencia', 'Kari Cruz', '4152324213751764' , '01/26', '456'),
+        (6, 'Transferencia', 'Dayan Euroza', '6452324214751653' , '01/26', '456');
+
+
+-- Insertar datos en la tabla Transacciones
+INSERT INTO Transacciones (UsuarioId, Id_Tramite, Metodo, Descripcion, Fecha, Monto, Estado)
+VALUES 
+(1, 1, 'Tarjeta de Crédito', 'Compra de libros', '2024-10-21T14:30:00', 150.00, 'Completo'),
+(1, 2, 'Tarjeta de Crédito', 'Pago de suscripción', '2024-10-22T10:15:00', 50.00, 'Pendiente'),
+(2, 3, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
+(3, 4, 'Tarjeta de Debito', 'Pago de suscripciòn', '2024-10-21T09:00:00', 200.00, 'Pendiente'),
+(4, 5, 'Transferencia', 'Pago de factura de servicios', '2024-10-21T09:00:00', 200.00, 'Completo'),
+(5, 6, 'Tarjeta de Debito', 'Pago de video juego', '2024-10-21T09:00:00', 200.00, 'Completo');
+</pre>
     </div>
-    <footer>
-        <p>&copy; 2024 Nombre de la Empresa. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
