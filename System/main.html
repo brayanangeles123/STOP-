@@ -47,6 +47,10 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        input[type="file"] {
+            padding: 5px;
+            margin: 5px 0 20px;
+        }
         .button {
             padding: 10px 15px;
             background-color: #35424a;
@@ -82,8 +86,8 @@
 
 <header>
     <div class="nav-buttons">
-        <a href="./../dbase/dbaseinfo.html" class="button">Regresar</a>
-        <a href="./../index.html" class="button">Principal</a>
+        <a href="pagina_anterior.html" class="button">Regresar</a>
+        <a href="pagina_inicial.html" class="button">Inicio</a>
     </div>
     <div class="title">
         <h1>Registro de Usuario</h1>
@@ -91,7 +95,7 @@
 </header>
 
 <div class="container">
-    <form action="Registrar_Usuario" method="post">
+    <form action="Registrar_Usuario" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="Nombre">Nombre</label>
             <input type="text" id="Nombre" name="Nombre" class="form-control" required placeholder="Ingresa tu nombre" />
@@ -135,6 +139,17 @@
         <div class="form-group">
             <label for="FechaNacimiento">Fecha de Nacimiento</label>
             <input type="date" id="FechaNacimiento" name="FechaNacimiento" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="CURP">CURP</label>
+            <input type="text" id="CURP" name="CURP" class="form-control" required placeholder="Ingresa tu CURP" />
+            <span class="text-danger" id="CURPError"></span>
+        </div>
+        <div class="form-group">
+            <label for="INE">INE (Escanear)</label>
+            <input type="file" id="INE" name="INE" class="form-control" accept="image/*" capture="environment" required />
+            <span class="text-danger" id="INEError"></span>
+            <small>Escanea tu INE usando la cámara de tu dispositivo.</small>
         </div>
         <div class="form-group">
             <label for="Contrasena">Contraseña</label>
